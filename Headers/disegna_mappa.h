@@ -4,7 +4,6 @@
 #include "mappa.h"
 #include "entità.h"
 
-/*Importante è l'utilizzo di 'char[][80]' compatibile con il puntatore globale*/
-void disegna_mappa(char map [][LARGHEZZA_MAPPA], giocatore p, char *msg, nemico n[]);
+void disegna_mappa(Mappa* m, Giocatore* p, char* msg, Nemico* n[], int num_nemici);
 
 #endif //ILMIOGIOCO_DISEGNA_MAPPA_H

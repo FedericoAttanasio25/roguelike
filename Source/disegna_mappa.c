@@ -1,16 +1,20 @@
 #include "disegna_mappa.h"
 #include <ncurses.h>
 
-void disegna_mappa(char map [][LARGHEZZA_MAPPA], giocatore p, char *msg, nemico n[])
+void disegna_mappa(Mappa* m, Giocatore* p, char* msg, Nemico* n[], int num_nemici)
 {
+    if (m == NULL || p == NULL) {
+        return;
+    }
+    
     clear();
 
-    //disegno mappa statica
+    // Disegno mappa statica
     for(int y = 0; y < ALTEZZA_MAPPA; y++)
     {
         for (int x = 0; x < LARGHEZZA_MAPPA; x++)
         {
-            char carattere = map[y][x];
+            char carattere = mappa_get_cella(m, y, x);
             switch(carattere)
             {
                 case '#':
@@ -49,24 +53,24 @@ void disegna_mappa(char map [][LARGHEZZA_MAPPA], giocatore p, char *msg, nemico 
         }
     }
 
-    //ciclo per stampare i nemici
+    // Ciclo per stampare i nemici
     attron(COLOR_PAIR(1));
-    for(int i = 0; i < 3; i++)
+    for(int i = 0; i < num_nemici; i++)
     {
-        if(n[i].x_e != -1)
+        if(nemico_is_vivo(n[i]))
         {
-            mvaddch(n[i].y_e, n[i].x_e, n[i].icon_e);
+            mvaddch(nemico_get_y(n[i]), nemico_get_x(n[i]), nemico_get_icon(n[i]));
         }
     }
     attroff(COLOR_PAIR(1));
 
-    //disegno giocatore
+    // Disegno giocatore
     attron(COLOR_PAIR(4));
-    mvaddch(p.y, p.x, p.icon);
+    mvaddch(giocatore_get_y(p), giocatore_get_x(p), giocatore_get_icon(p));
     attroff(COLOR_PAIR(4));
 
     mvprintw(ALTEZZA_MAPPA + 1, 0, "Status: %s", msg);
-    mvprintw(ALTEZZA_MAPPA + 2, 0, "Tasca: %s", p.tasca ? "Piena (Chiave)" : "Vuota");
-    mvprintw(ALTEZZA_MAPPA + 3, 0, "Arma: %s", p.arma ? "SI" : "No");
+    mvprintw(ALTEZZA_MAPPA + 2, 0, "Tasca: %s", giocatore_get_tasca(p) ? "Piena (Chiave)" : "Vuota");
+    mvprintw(ALTEZZA_MAPPA + 3, 0, "Arma: %s", giocatore_get_arma(p) ? "SI" : "No");
     refresh();
 }

@@ -1,0 +1,3 @@
+/Users/flaviodemusso/projects/roguelike/build/CMakeFiles/IlMioGioco.dir
+/Users/flaviodemusso/projects/roguelike/build/CMakeFiles/edit_cache.dir
+/Users/flaviodemusso/projects/roguelike/build/CMakeFiles/rebuild_cache.dir

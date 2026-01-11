@@ -3,22 +3,43 @@
 
 #include "mappa.h"
 
-typedef struct
-{
-    int y;
-    int x;
-    int tasca;  //tasca funzionerà se è piena (1) o vuota (0), se il personaggio ha la chiave o no.
-    int arma;   //stesso funzionamento di tasca.
-    char icon;
-}giocatore;
+// Struct opache
+typedef struct Giocatore Giocatore;
+typedef struct Nemico Nemico;
 
-typedef struct
-{
-    int y_e;
-    int x_e;
-    char icon_e;
-}nemico;
+// === GIOCATORE ===
+// Costruttore e distruttore
+Giocatore* giocatore_crea(int y, int x);
+void giocatore_distruggi(Giocatore* g);
 
-void muovi_nemici(char map [][LARGHEZZA_MAPPA], giocatore p, nemico n[]);
+// Getter
+int giocatore_get_y(Giocatore* g);
+int giocatore_get_x(Giocatore* g);
+int giocatore_get_tasca(Giocatore* g);
+int giocatore_get_arma(Giocatore* g);
+char giocatore_get_icon(Giocatore* g);
+
+// Setter
+void giocatore_set_posizione(Giocatore* g, int y, int x);
+void giocatore_set_tasca(Giocatore* g, int valore);
+void giocatore_set_arma(Giocatore* g, int valore);
+
+// === NEMICO ===
+// Costruttore e distruttore
+Nemico* nemico_crea(int y, int x);
+void nemico_distruggi(Nemico* n);
+
+// Getter
+int nemico_get_y(Nemico* n);
+int nemico_get_x(Nemico* n);
+char nemico_get_icon(Nemico* n);
+int nemico_is_vivo(Nemico* n);
+
+// Setter
+void nemico_set_posizione(Nemico* n, int y, int x);
+void nemico_uccidi(Nemico* n);
+
+// === FUNZIONI DI GIOCO ===
+void muovi_nemici(Mappa* m, Giocatore* p, Nemico* n[], int num_nemici);
 
 #endif //ILMIOGIOCO_ENTITÀ_H

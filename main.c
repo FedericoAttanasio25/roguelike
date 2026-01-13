@@ -37,6 +37,19 @@ int main (void)
         return -1;
     }
 
+
+    while (get_flag(partita) == 0)
+    {
+        gioco_free(partita);
+
+        partita = gioco_init();
+        if (!partita)
+        {
+            endwin();
+            return -1;
+        }
+    }
+
     gioco_draw(partita);
 
     int tasto;

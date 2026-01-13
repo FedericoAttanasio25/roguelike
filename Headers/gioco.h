@@ -7,6 +7,8 @@ Gioco* gioco_init();
 
 int gioco_update (Gioco* g, int input_tasto);
 
+int get_flag(Gioco* g);
+
 void gioco_draw (Gioco *g);
 
 void gioco_free (Gioco* g);

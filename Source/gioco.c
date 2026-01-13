@@ -2,6 +2,7 @@
 #include "mappa.h"
 #include "entità.h"
 #include "disegna_mappa.h"
+#include "pathfinding.h"
 #include <stdlib.h>
 #include <string.h>
 #include <ncurses.h>
@@ -22,6 +23,11 @@ struct Gioco {
 
     int difficolta;
     int num_nemici_attivi;
+
+    int x_uscita;
+    int y_uscita;
+
+    int flag;
 
     char messaggio_status[100];
 };
@@ -265,6 +271,8 @@ Gioco *gioco_init()
         }
     }
     g->mappa[r_centro][c_centro] = 'x';
+    g->x_uscita = c_centro;
+    g->y_uscita = r_centro;
 
     //porta d su un lato casuale e nella casella davanti metto pavimento
     int lato = rand() % 4;
@@ -295,7 +303,14 @@ Gioco *gioco_init()
     }
     //fine generazione scatola per la x
 
+
+    int x_temp = 0;
+    int y_temp = 0;
+
     inizializza_player(&g->player, g->mappa);
+    //flag per capire se posso arrivare alla porta o no
+    g->flag = calcolo_mossa_a_star(g->mappa, g->player.y, g->player.x, g->y_uscita, g->x_uscita, &x_temp, &y_temp );
+
     inizializza_nemici(&g->player, g->nemici_terra, g->mappa, g->num_nemici_attivi);
     inizializza_nemici(&g->player, g->nemici_segrete, g->mappa_s, g->num_nemici_attivi);
 
@@ -417,4 +432,10 @@ void gioco_draw (Gioco* g)
 void gioco_free (Gioco* g)
 {
     if (g) free (g);
+}
+
+//uso a* per controllare se posso arrivare alla porta d altrimenti richiamo gioco_init
+int get_flag (Gioco* g)
+{
+    return g->flag;
 }

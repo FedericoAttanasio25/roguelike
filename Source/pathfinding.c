@@ -59,6 +59,8 @@ int calcolo_mossa_a_star(char map[][LARGHEZZA_MAPPA], int start_y, int start_x, 
     nodo_iniziale->f_cost = nodo_iniziale->h_cost;
     nodo_iniziale->open = 1;
 
+
+
     while (1)
     {
         //cerco il nodo con f_cost minore
@@ -146,5 +148,4 @@ int calcolo_mossa_a_star(char map[][LARGHEZZA_MAPPA], int start_y, int start_x, 
             }
         }
     }
-    return 0;
 }

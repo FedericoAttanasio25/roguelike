@@ -1,7 +1,9 @@
-#include "disegna_mappa.h"
+#include "mappa.h"
+#include "entità.h"
+#include "gioco.h"
 #include <ncurses.h>
 
-void disegna_mappa(char map [][LARGHEZZA_MAPPA], giocatore p, char *msg, nemico n[])
+void disegna_mappa(char map [][LARGHEZZA_MAPPA], giocatore p, char *msg, nemico n[], int numero_nemici)
 {
     clear();
 
@@ -30,7 +32,19 @@ void disegna_mappa(char map [][LARGHEZZA_MAPPA], giocatore p, char *msg, nemico 
                     break;
 
                 case 'W':
-                    attron(COLOR_PAIR(1));
+                    attron(COLOR_PAIR(6));
+                    break;
+
+                case 'P':
+                    attron(COLOR_PAIR(6));
+                    break;
+
+                case 'R':
+                    attron(COLOR_PAIR(6));
+                    break;
+
+                case '!':
+                    attron(COLOR_PAIR(6));
                     break;
 
                 case 's':
@@ -51,7 +65,7 @@ void disegna_mappa(char map [][LARGHEZZA_MAPPA], giocatore p, char *msg, nemico 
 
     //ciclo per stampare i nemici
     attron(COLOR_PAIR(1));
-    for(int i = 0; i < 3; i++)
+    for(int i = 0; i < numero_nemici; i++)
     {
         if(n[i].x_e != -1)
         {
@@ -67,6 +81,6 @@ void disegna_mappa(char map [][LARGHEZZA_MAPPA], giocatore p, char *msg, nemico 
 
     mvprintw(ALTEZZA_MAPPA + 1, 0, "Status: %s", msg);
     mvprintw(ALTEZZA_MAPPA + 2, 0, "Tasca: %s", p.tasca ? "Piena (Chiave)" : "Vuota");
-    mvprintw(ALTEZZA_MAPPA + 3, 0, "Arma: %s", p.arma ? "SI" : "No");
+    mvprintw(ALTEZZA_MAPPA + 3, 0, "Arma: %s (Durata: %d)", p.arma ? "SI" : "No", p.durata);
     refresh();
 }

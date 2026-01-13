@@ -6,4 +6,4 @@
 #define LARGHEZZA_MAPPA 80
 
 void genera_livello(char map [][LARGHEZZA_MAPPA]);
-#endif //ILMIOGIOCO_MAPPA_H
+#endif //ILMIOGIOCO_MAPPA_H 

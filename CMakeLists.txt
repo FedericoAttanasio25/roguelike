@@ -19,6 +19,10 @@ add_executable(IlMioGioco
         Source/entità.c
         Headers/disegna_mappa.h
         Source/disegna_mappa.c
+        Headers/gioco.h
+        Source/gioco.c
+        Headers/pathfinding.h
+        Source/pathfinding.c
 )
 
 # 3. LINK LIBRERIE DI SISTEMA

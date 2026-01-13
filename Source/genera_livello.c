@@ -1,4 +1,4 @@
-#include"mappa.h"
+#include"genera_livello.h"
 #include <stdlib.h>
 
 void genera_livello(char map [][LARGHEZZA_MAPPA])

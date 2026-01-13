@@ -1,7 +1,7 @@
 #ifndef ILMIOGIOCO_ENTITÀ_H
 #define ILMIOGIOCO_ENTITÀ_H
 
-#include "mappa.h"
+#include "genera_livello.h"
 
 #define MAX_NEMICI 10 //define per array sovradimensionale
 typedef struct

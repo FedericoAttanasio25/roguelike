@@ -1,5 +1,5 @@
 #include "gioco.h"
-#include "mappa.h"
+#include "genera_livello.h"
 #include "entità.h"
 #include "disegna_mappa.h"
 #include "pathfinding.h"

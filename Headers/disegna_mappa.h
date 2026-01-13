@@ -1,7 +1,7 @@
 #ifndef ILMIOGIOCO_DISEGNA_MAPPA_H
 #define ILMIOGIOCO_DISEGNA_MAPPA_H
 
-#include "mappa.h"
+#include "genera_livello.h"
 #include "entità.h"
 
 

@@ -14,7 +14,7 @@ include_directories(Headers)
 # ma metterli aiuta CLion a indicizzarli meglio.
 add_executable(IlMioGioco
         main.c
-        Source/mappa.c
+        Source/genera_livello.c
         Headers/entità.h
         Source/entità.c
         Headers/disegna_mappa.h

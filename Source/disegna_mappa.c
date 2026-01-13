@@ -1,4 +1,4 @@
-#include "mappa.h"
+#include "genera_livello.h"
 #include "entità.h"
 #include "gioco.h"
 #include <ncurses.h>

@@ -2,7 +2,7 @@
 #ifndef ILMIOGIOCO_PATHFINDING_H
 #define ILMIOGIOCO_PATHFINDING_H
 
-#include "mappa.h"
+#include "genera_livello.h"
 
 //Input:mappa, coordinate di partenza (nemico), coordinate di arrivo (player)
 //Riempie next_y e next_x con le coordinate del prossimo passo da fare

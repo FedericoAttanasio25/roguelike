@@ -190,8 +190,6 @@ Gioco *gioco_init()
         return NULL;
     }
 
-    srand((unsigned) time(NULL));
-
     clear();mvprintw(5, 10, "BENVENUTO NEL ROGUELIKE");
     mvprintw(7, 10, "Seleziona la difficolta':");
     mvprintw(9, 10, "1 - FACILE (Pochi nemici, IA standard)");
